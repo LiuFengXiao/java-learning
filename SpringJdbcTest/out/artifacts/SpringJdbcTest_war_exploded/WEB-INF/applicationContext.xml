@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                          ">
+
+    <bean name="datasource" class="org.apache.commons.dbcp2.BasicDataSource" lazy-init="false">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/forlearn?useSSL=false"/>
+        <property name="password" value="123456"/>
+        <property name="username" value="root"/>
+        <property name="maxTotal" value="20"/>
+        <property name="maxIdle" value="10"/>
+        <property name="initialSize" value="3"/>
+        <property name="minIdle" value="3"/>
+
+
+
+
+    </bean>
+    <!-- 直接使用spring提供的jdbcTemplate接口操作数据库-->
+    <bean name="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate" lazy-init="false">
+        <property name="dataSource" ref="datasource"></property>
+    </bean>
+    <!-- 使用mytatis 框架操作数据库-->
+    <bean name="SqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="datasource"/>
+        <property name="configLocation" value="classpath:sqlMapConfig.xml"/>
+    </bean>
+
+<!--    <bean name="studentMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">-->
+<!--        <property name="mapperInterface" value="Mapper.StudentMapper"/>-->
+<!--        <property name="sqlSessionFactory" ref="SqlSessionFactory"/>-->
+<!--    </bean><bean name="student2Mapper" class="org.mybatis.spring.mapper.MapperFactoryBean">-->
+<!--        <property name="mapperInterface" value="Mapper.Student2Mapper"/>-->
+<!--        <property name="sqlSessionFactory" ref="SqlSessionFactory"/>-->
+<!--    </bean><bean name="teacherMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">-->
+<!--        <property name="mapperInterface" value="Mapper.TeacherMapper"/>-->
+<!--        <property name="sqlSessionFactory" ref="SqlSessionFactory"/>-->
+<!--    </bean><bean name="partmentMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">-->
+<!--        <property name="mapperInterface" value="Mapper.PartmentMapper"/>-->
+<!--        <property name="sqlSessionFactory" ref="SqlSessionFactory"/>-->
+<!--    </bean>-->
+
+    <bean name="student" class="POJO.Student" scope="prototype">
+    </bean>
+    <bean name="student2" class="POJO.Student2" scope="prototype">
+    </bean>
+
+
+    
+
+<!--    开启事务-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="datasource"/>
+
+    </bean>
+
+
+<!--    扫描Mapper-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="Mapper"/>
+        <property name="sqlSessionFactoryBeanName" value="SqlSessionFactory"/>
+        <property name="annotationClass" value="org.springframework.stereotype.Repository"/>
+    </bean>
+
+
+
+
+</beans>

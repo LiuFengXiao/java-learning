@@ -1,0 +1,34 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Chart.js 最新版本使用案例</title>
+    <link href="https://cdn.bootcss.com/Chart.js/2.8.0/Chart.css" rel="stylesheet">
+    <link rel="stylesheet" href="showData.css">
+    <link rel="stylesheet" href="base.css">
+    <script src="showData.js"></script>
+    <script src="jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.bootcss.com/Chart.js/2.8.0/Chart.js"></script>
+</head>
+
+<body>
+    <!-- <div cla√ss="not-found" style="display:none">Not Found</div> -->
+    <header>
+        <section>
+            <li class="fl">
+                <h5>小车编号</h5>
+                <input type="text" id="carid">
+            </li>
+            <li class="fr">
+                <h5>控制周期</h5>
+                <button onclick="getdata()">下一个周期</button>
+            </li>
+        </section>
+    </header>
+     <div>
+        <canvas id="myChart"></canvas>
+     </div>
+    
+
+</body>
+</html>

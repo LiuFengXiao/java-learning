@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="commons-io-2.5">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../software/java_jar/commons-io-2.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../software/java_jar/bluecove-2.1.1-SNAPSHOT (1).jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/src" />
+    </SOURCES>
+  </library>
+</component>

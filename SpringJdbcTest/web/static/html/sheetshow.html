@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表格展示</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+    <table border="1" id="studentsinfo">
+
+
+
+    </table>
+<script>
+
+
+    function  getinfo() {
+
+        var label =  document.getElementById("studentsinfo");
+        var req =new  XMLHttpRequest();
+        req.open("get","/getStudentinfo.do");
+
+        req.onreadystatechange= function () {
+            var string =req.responseText;
+            var json = $.parseJSON(string);
+            var ele = document.createElement("tr");
+            console.log(json.student);
+            console.log(json);
+            console.log(typeof json);
+            label.innerHTML= ("  <tr>\n" +
+                "\n" +
+                "           <td>id</td>\n" +
+                "           <td>姓名</td>\n" +
+                "           <td>学院</td>\n" +
+                "       </tr><td>"+json.student.id+"</td><td>"+json.student.name+"</td><td>"+json.student.partment+"</td>");
+
+        }
+        req.send();
+
+
+    }
+getinfo();
+
+</script>
+</body>
+</html>

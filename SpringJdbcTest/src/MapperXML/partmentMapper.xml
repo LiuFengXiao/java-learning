@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Mapper.PartmentMapper">
+    <resultMap id="partmentinfo" type="POJO.Partment">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <association property="teacherId" fetchType="lazy" column="teacher_id" select="Mapper.TeacherMapper.getTeacher"/>
+    </resultMap>
+    <select id="getPartment" parameterType="int" resultMap="partmentinfo">
+        select id,name,teacher_id from department where id =#{id}
+    </select>
+    <insert id="insertPartment" parameterType="POJO.Partment">
+        insert into department(id,name,teacher_id) values(#{id},#{name},#{teacherId})
+    </insert>
+
+    <update id="updatePartment" parameterType="POJO.Partment">
+        update  department set name = #{name},id = #{id},teacher_id= #{teacherId} where id =#{id}
+    </update>
+    <cache/>
+</mapper>

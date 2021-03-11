@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:c="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="/admin/login" method="post">
+    <c:if test="${param.error != null}">
+        <p c:text="${param.error}">
+            Invalid username and password.
+        </p>
+    </c:if>
+    <c:if test="${param.logout != null}">
+        <p c:text="${param.logout}">
+            You have been logged out.
+        </p>
+    </c:if>
+    <p>
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username"/>
+    </p>
+    <p>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password"/>
+    </p>
+
+    <button type="submit" class="btn">Log in</button>
+</form>
+</body>
+</html>

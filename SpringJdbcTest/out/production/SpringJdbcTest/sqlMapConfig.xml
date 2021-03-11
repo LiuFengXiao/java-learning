@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+    <typeHandlers>
+        <typeHandler javaType="POJO.SexEnum" jdbcType="INTEGER" handler="Typehandler.SexEnumTypeHandler"/>
+    </typeHandlers>
+    <mappers>
+        <mapper resource="MapperXML/studentMapper.xml"></mapper>
+        <mapper resource="MapperXML/student2Mapper.xml"></mapper>
+        <mapper resource="MapperXML/partmentMapper.xml"></mapper>
+        <mapper resource="MapperXML/teacherMapper.xml"></mapper>
+        <mapper resource="MapperXML/student3Mapper.xml"></mapper>
+
+    </mappers>
+
+
+</configuration>
